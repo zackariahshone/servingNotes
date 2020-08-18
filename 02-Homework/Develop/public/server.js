@@ -1,21 +1,41 @@
 
+const express = require('express');
+const app = express();
+const router = require('express').Router();
 const http = require("http");
+let path = require('path');
+//const { response } = require('express');
+
 const PORT = 8080;
 
-function handleRequest(request, response) {
-//express routes and what gets return here
-  
-  response.end("It Works!! Path Hit: " + request.url);
-}
+//Make shift data idealy add more as we progress: 
+const strtData = [{
+    routeName: 'NoteOne',
+    routeBody: 'this is the body of the note',
+    routeName: 'noteone',
+},
+{
+    routeName: 'NoteOne',
+    routeBody: 'this is the body of the note',
+    routeName: 'noteone'
+}]
 
 
+
+app.get('/', function(req, res){
+   return res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+app.get('/notes', function(req, res){
+      return  res.sendFile(path.join(__dirname,'/notes.html'));
+});
+
+//app.get()
 //create functions for requests to send back to the front end
 
-const server = http.createServer(handleRequest);
 
 
-server.listen(PORT, function() {
-
- 
-  console.log("Server listening on: http://localhost:" + PORT);
-});
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+   
+  });
