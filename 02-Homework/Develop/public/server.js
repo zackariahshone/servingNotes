@@ -10,9 +10,9 @@ const PORT = 8080;
 
 //Make shift data idealy add more as we progress: 
 const strtData = [{
-    routeName: 'NoteOne',
-    routeBody: 'this is the body of the note',
-    routeName: 'noteone',
+    routeName: 'kit',
+    routeBody: 'is the greatest',
+    
 },
 {
     routeName: 'NoteOne',
@@ -27,10 +27,16 @@ app.get('/', function(req, res){
 });
 
 app.get('/notes', function(req, res){
-      return  res.sendFile(path.join(__dirname,'/notes.html'));
+    return res.sendFile(path.join(__dirname, '/notes.html'))
 });
 
-//app.get()
+app.get('/api/notes', function(req, res){
+      return  res.sendFile(path.join(__dirname,'../db/db.json'));
+});
+
+app.get('/data' , function(req,res){
+    return res.json(strtData);
+});
 //create functions for requests to send back to the front end
 
 
