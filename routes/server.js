@@ -22,6 +22,7 @@ app.use(express.static('public'));
 
 //Make shift data idealy add more as we progress: 
 
+
 app.get('/', function(req, res){
    return res.sendFile(path.join(__dirname, './public/index.html'));
 });
@@ -39,7 +40,21 @@ app.get('/api/notes', function(req, res){
 // });
 //create functions for requests to send back to the front end
 
-app.po
+app.post("/api/notes", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    const newNote = req.body;
+   console.log(newNote);
+    // Using a RegEx Pattern to remove spaces from newCharacter
+    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+    //newNote.routeName = newNote.name.replace(/\s+/g, "").toLowerCase();
+  
+    console.log(newNote);
+  
+    strtData.push(newNote);
+  
+    //res.json(newNote);
+  });
 
 app.listen(PORT, function() {
     console.log(__dirname);
