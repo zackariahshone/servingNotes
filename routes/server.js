@@ -1,9 +1,13 @@
 
 const express = require('express');
 const app = express();
+
 //const router = require('express').Router();
 //const http = require("http");
 let path = require('path');
+const { read, write, getNotes} = require('./public/assets/js/store');
+
+
 
 //const htmlRoutes = require("/routes/public/assets")
 // const apiRoutes = require("/routes/db/db.json")
@@ -45,15 +49,9 @@ app.post("/api/notes", function(req, res) {
     // This works because of our body parsing middleware
     const newNote = req.body;
    console.log(newNote);
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    //newNote.routeName = newNote.name.replace(/\s+/g, "").toLowerCase();
-  
     console.log(newNote);
-  
-    strtData.push(newNote);
-  
-    //res.json(newNote);
+    write(newNote);
+
   });
 
 app.listen(PORT, function() {
